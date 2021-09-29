@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     backgroundColor: "#000",
+    boxShadow: "none",
   },
   headerLogo: {
     ...theme.typography.h3,
