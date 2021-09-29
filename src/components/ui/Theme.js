@@ -76,6 +76,14 @@ export default createTheme({
         fontFamily: "Acme",
         fontSize: "1.5rem",
       },
+      underline: {
+        "&:before": {
+          borderBottom: `2px solid ${IYellow}`,
+        },
+        "&:hover:not($disabled):not($focused):not($error):before": {
+          borderBottom: `2px solid ${IYellow}`,
+        },
+      },
     },
   },
 });

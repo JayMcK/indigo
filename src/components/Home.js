@@ -31,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.white,
   },
   textFieldGrid: {
-    marginTop: "1em",
-    marginBottom: "1em",
+    marginTop: "2em",
+    marginBottom: "2em",
   },
 }));
 
@@ -75,8 +75,15 @@ export default function Home() {
                 </Typography>
               </Grid>
               <Grid item>
-                <Typography variant="h4" paragraph>
-                  Find out all the facts about your loved TV shows and films
+                <Typography
+                  variant="h4"
+                  paragraph
+                  style={{
+                    marginLeft: matchesSM ? "1em" : 0,
+                    marginRight: matchesSM ? "1em" : 0,
+                  }}
+                >
+                  Find out all the facts about your loved films
                 </Typography>
               </Grid>
               <Grid item className={classes.textFieldGrid}>
@@ -109,6 +116,7 @@ export default function Home() {
             </Grid>
           </Grid>
         </Grid>
+        <Grid item>{/* ----- Movies Block ----- */}</Grid>
       </Grid>
     </Grid>
   );
