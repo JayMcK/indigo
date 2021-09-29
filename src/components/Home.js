@@ -1,5 +1,6 @@
-import react, { useState } from "react";
+import react, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -7,8 +8,12 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useMediaQuery } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import Dialog from "@material-ui/core/Dialog";
 
 import SearchIcon from "@material-ui/icons/Search";
+
+import MovieGallery from "./commonComponents/MovieGallery";
+import MovieDialog from "./commonComponents/MovieDialog";
 
 import heroBackground from "../assets/heroBackground.png";
 
@@ -34,19 +39,36 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "2em",
     marginBottom: "2em",
   },
+  moviesContainer: {
+    backgroundColor: "#000",
+  },
+  goToSearchButton: {
+    ...theme.typography.searchButton,
+    width: "100%",
+    textTransform: "uppercase",
+  },
 }));
 
-export default function Home() {
+export default function Home({
+  singleMovieString,
+  setSingleMovieString,
+  foundSearch,
+  setFoundSearch,
+  searchMoviesString,
+  setSearchMoviesString,
+  foundMovie,
+  setFoundMovie,
+}) {
   const classes = useStyles();
   const theme = useTheme();
 
+  const [dialogOpen, setDialogOpen] = useState(false);
+
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const [titleSearch, setTitleSearch] = useState("");
-
   const handleSearch = (e) => {
-    setTitleSearch(e.target.value);
-    console.log("titlesearch", titleSearch);
+    setSearchMoviesString(e.target.value);
+    console.log("moviesstring", searchMoviesString);
   };
 
   return (
@@ -90,7 +112,7 @@ export default function Home() {
                 <TextField
                   id="movie search"
                   label="Enter movie title"
-                  value={titleSearch}
+                  value={searchMoviesString}
                   onChange={handleSearch}
                   InputProps={{
                     startAdornment: (
@@ -109,6 +131,7 @@ export default function Home() {
                   className={classes.searchButton}
                   component={Link}
                   to="/search"
+                  disabled={searchMoviesString.length === 0}
                 >
                   Search movies
                 </Button>
@@ -116,8 +139,168 @@ export default function Home() {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item>{/* ----- Movies Block ----- */}</Grid>
+        <Grid item>
+          {/* ----- "Love" Movies Block ----- */}
+          <Grid
+            container
+            direction="column"
+            className={classes.moviesContainer}
+          >
+            <Grid
+              item
+              style={{
+                marginTop: "5em",
+              }}
+            >
+              <Grid item align="center">
+                <Typography variant="h5">Titles including "Love"</Typography>
+              </Grid>
+              <MovieGallery
+                singleMovieString={singleMovieString}
+                setSingleMovieString={setSingleMovieString}
+                search="love"
+                setDialogOpen={setDialogOpen}
+                foundMovie={foundMovie}
+                setFoundMovie={setFoundMovie}
+              />
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item>
+          {/* ----- "Jungle" Movies Block ----- */}
+          <Grid
+            container
+            direction="column"
+            className={classes.moviesContainer}
+          >
+            <Grid
+              item
+              style={{
+                marginLeft: "5em",
+                marginTop: "5em",
+                marginRight: "5em",
+              }}
+            >
+              <Grid item align="center">
+                <Typography variant="h5">Titles including "Jungle"</Typography>
+              </Grid>
+              <MovieGallery
+                singleMovieString={singleMovieString}
+                setSingleMovieString={setSingleMovieString}
+                search="jungle"
+                setDialogOpen={setDialogOpen}
+                foundMovie={foundMovie}
+                setFoundMovie={setFoundMovie}
+              />
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item>
+          {/* ----- "Why" Movies Block ----- */}
+          <Grid
+            container
+            direction="column"
+            className={classes.moviesContainer}
+          >
+            <Grid
+              item
+              style={{
+                marginLeft: "5em",
+                marginTop: "5em",
+                marginRight: "5em",
+              }}
+            >
+              <Grid item align="center">
+                <Typography variant="h5">Titles including "Why"</Typography>
+              </Grid>
+              <MovieGallery
+                singleMovieString={singleMovieString}
+                setSingleMovieString={setSingleMovieString}
+                search="why"
+                setDialogOpen={setDialogOpen}
+                foundMovie={foundMovie}
+                setFoundMovie={setFoundMovie}
+              />
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item>
+          {/* ----- "Car" Movies Block ----- */}
+          <Grid
+            container
+            direction="column"
+            className={classes.moviesContainer}
+          >
+            <Grid
+              item
+              style={{
+                marginLeft: "5em",
+                marginTop: "5em",
+                marginRight: "5em",
+              }}
+            >
+              <Grid item align="center">
+                <Typography variant="h5">Titles including "Car"</Typography>
+              </Grid>
+              <MovieGallery
+                singleMovieString={singleMovieString}
+                setSingleMovieString={setSingleMovieString}
+                search="why"
+                setDialogOpen={setDialogOpen}
+                foundMovie={foundMovie}
+                setFoundMovie={setFoundMovie}
+              />
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item>
+          {/* ----- "Anime" Movies Block ----- */}
+          <Grid
+            container
+            direction="column"
+            className={classes.moviesContainer}
+          >
+            <Grid
+              item
+              style={{
+                marginLeft: "5em",
+                marginTop: "5em",
+                marginRight: "5em",
+              }}
+            >
+              <Grid item align="center">
+                <Typography variant="h5">Titles including "Anime"</Typography>
+              </Grid>
+              <MovieGallery
+                singleMovieString={singleMovieString}
+                setSingleMovieString={setSingleMovieString}
+                search="anime"
+                setDialogOpen={setDialogOpen}
+                foundMovie={foundMovie}
+                setFoundMovie={setFoundMovie}
+              />
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item>
+          <Button
+            onClick={() => {
+              window.scrollTo(0, 0);
+            }}
+            className={classes.goToSearchButton}
+          >
+            Search for more movies
+          </Button>
+        </Grid>
       </Grid>
+      <Dialog fullScreen open={dialogOpen} onClose={() => setDialogOpen(false)}>
+        <MovieDialog
+          singleMovieString={singleMovieString}
+          setDialogOpen={setDialogOpen}
+          foundMovie={foundMovie}
+          setFoundMovie={setFoundMovie}
+        />
+      </Dialog>
     </Grid>
   );
 }

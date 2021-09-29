@@ -42,10 +42,19 @@ export default createTheme({
       color: IWhite,
       fontSize: "1.5rem",
     },
-    subtitle2: {
+    h5: {
+      fontFamily: "Josefin Sans",
+      color: IWhite,
+      fontSize: "1.5rem",
+    },
+    subtitle1: {
       fontFamily: "Acme",
       color: IWhite,
       fontSize: "1rem",
+    },
+    subtitle2: {
+      fontFamily: "Josefin Sans",
+      fontSize: "1.5rem",
     },
     searchButton: {
       color: "#000",
@@ -83,6 +92,11 @@ export default createTheme({
         "&:hover:not($disabled):not($focused):not($error):before": {
           borderBottom: `2px solid ${IYellow}`,
         },
+      },
+    },
+    MuiDialogContent: {
+      root: {
+        padding: 0,
       },
     },
   },
