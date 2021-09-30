@@ -1,8 +1,6 @@
-import react, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useMediaQuery } from "@material-ui/core";
@@ -26,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MovieGallery({
   search,
-  singleMovieString,
   setSingleMovieString,
   setDialogOpen,
 }) {
@@ -34,7 +31,6 @@ export default function MovieGallery({
   const theme = useTheme();
 
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
-  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   const [foundSearch, setFoundSearch] = useState(null);
 

@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import { useState } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
 
@@ -6,6 +6,7 @@ import theme from "./ui/Theme";
 
 import Header from "./ui/Header";
 import Footer from "./ui/Footer";
+import NotFound from "./ui/NotFound";
 import Home from "./Home";
 import Search from "./Search";
 import "../App.css";
@@ -33,8 +34,6 @@ function App() {
                 setSingleMovieString={setSingleMovieString}
                 searchMoviesString={searchMoviesString}
                 setSearchMoviesString={setSearchMoviesString}
-                setFoundSearch={setFoundSearch}
-                foundSearch={foundSearch}
                 foundMovie={foundMovie}
                 setFoundMovie={setFoundMovie}
               />
@@ -56,7 +55,10 @@ function App() {
               />
             )}
           />
-          <Route path="/not-found" component={() => <h1>404 Page</h1>} />
+          <Route
+            path="/not-found"
+            render={(props) => <NotFound {...props} />}
+          />
           <Redirect to="not-found" />
         </Switch>
         <Footer />

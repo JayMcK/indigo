@@ -1,5 +1,4 @@
-import react, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -111,8 +110,6 @@ export default function MovieDialog({
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
-  const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
 
   const apiKey = process.env.REACT_APP_API_KEY;

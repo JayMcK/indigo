@@ -1,4 +1,4 @@
-import react, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
@@ -52,7 +52,6 @@ export default function Search({
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
-  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   const apiKey = process.env.REACT_APP_API_KEY;
 

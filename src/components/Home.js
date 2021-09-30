@@ -1,6 +1,5 @@
-import react, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -54,8 +53,6 @@ const useStyles = makeStyles((theme) => ({
 export default function Home({
   singleMovieString,
   setSingleMovieString,
-  foundSearch,
-  setFoundSearch,
   searchMoviesString,
   setSearchMoviesString,
   foundMovie,
@@ -158,12 +155,9 @@ export default function Home({
                 <Typography variant="h5">Titles including "Love"</Typography>
               </Grid>
               <MovieGallery
-                singleMovieString={singleMovieString}
                 setSingleMovieString={setSingleMovieString}
                 search="love"
                 setDialogOpen={setDialogOpen}
-                foundMovie={foundMovie}
-                setFoundMovie={setFoundMovie}
               />
             </Grid>
           </Grid>
@@ -187,12 +181,9 @@ export default function Home({
                 <Typography variant="h5">Titles including "Jungle"</Typography>
               </Grid>
               <MovieGallery
-                singleMovieString={singleMovieString}
                 setSingleMovieString={setSingleMovieString}
                 search="jungle"
                 setDialogOpen={setDialogOpen}
-                foundMovie={foundMovie}
-                setFoundMovie={setFoundMovie}
               />
             </Grid>
           </Grid>
@@ -216,12 +207,9 @@ export default function Home({
                 <Typography variant="h5">Titles including "Why"</Typography>
               </Grid>
               <MovieGallery
-                singleMovieString={singleMovieString}
                 setSingleMovieString={setSingleMovieString}
                 search="why"
                 setDialogOpen={setDialogOpen}
-                foundMovie={foundMovie}
-                setFoundMovie={setFoundMovie}
               />
             </Grid>
           </Grid>
@@ -245,12 +233,9 @@ export default function Home({
                 <Typography variant="h5">Titles including "Car"</Typography>
               </Grid>
               <MovieGallery
-                singleMovieString={singleMovieString}
                 setSingleMovieString={setSingleMovieString}
                 search="why"
                 setDialogOpen={setDialogOpen}
-                foundMovie={foundMovie}
-                setFoundMovie={setFoundMovie}
               />
             </Grid>
           </Grid>
@@ -274,12 +259,9 @@ export default function Home({
                 <Typography variant="h5">Titles including "Anime"</Typography>
               </Grid>
               <MovieGallery
-                singleMovieString={singleMovieString}
                 setSingleMovieString={setSingleMovieString}
                 search="anime"
                 setDialogOpen={setDialogOpen}
-                foundMovie={foundMovie}
-                setFoundMovie={setFoundMovie}
               />
             </Grid>
           </Grid>
