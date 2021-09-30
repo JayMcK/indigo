@@ -68,15 +68,21 @@ export default function Search({
   }, [URL, setFoundSearch]);
 
   const handleSelect = (e) => {
-    let query = e.target.alt.replace(/[\W_]+/g, "+");
-    setSingleMovieString(query);
-    setDialogOpen(true);
+    if (e.target.alt !== undefined) {
+      let query = e.target.alt.replace(/[\W_]+/g, "+");
+      setSingleMovieString(query);
+      setDialogOpen(true);
+    }
   };
 
   return (
     <Grid item className={classes.searchBox}>
       <Grid container direction="column">
-        <Grid item align="center" style={{ marginTop: "1em" }}>
+        <Grid
+          item
+          align="center"
+          style={{ marginTop: matchesSM ? "2em" : "1em" }}
+        >
           <Typography variant="h5">
             Titles including "{searchMoviesString}"
           </Typography>
@@ -92,7 +98,7 @@ export default function Search({
               (movie) =>
                 movie.Poster !== "N/A" && (
                   <Grid item key={movie.imdbID}>
-                    <Button onClick={(e) => handleSelect(e)}>
+                    <Button disableRipple onClick={(e) => handleSelect(e)}>
                       <img
                         src={movie.Poster}
                         alt={movie.Title}

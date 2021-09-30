@@ -52,9 +52,11 @@ export default function MovieGallery({
   }, [URL]);
 
   const handleSelect = (e) => {
-    let query = e.target.alt.replace(/[\W_]+/g, "+");
-    setSingleMovieString(query);
-    setDialogOpen(true);
+    if (e.target.alt !== undefined) {
+      let query = e.target.alt.replace(/[\W_]+/g, "+");
+      setSingleMovieString(query);
+      setDialogOpen(true);
+    }
   };
 
   return (
@@ -70,7 +72,7 @@ export default function MovieGallery({
             (movie) =>
               movie.Poster !== "N/A" && (
                 <Grid item key={movie.imdbID}>
-                  <Button onClick={(e) => handleSelect(e)}>
+                  <Button disableRipple onClick={(e) => handleSelect(e)}>
                     <img
                       src={movie.Poster}
                       alt={movie.Title}
