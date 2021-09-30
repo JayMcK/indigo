@@ -55,7 +55,7 @@ export default function Search({
 
   const apiKey = process.env.REACT_APP_API_KEY;
 
-  const URL = `http://www.omdbapi.com/?s=${searchMoviesString}&type=movie&apikey=${apiKey}`;
+  const URL = `https://www.omdbapi.com/?s=${searchMoviesString}&type=movie&apikey=${apiKey}`;
 
   useEffect(() => {
     axios

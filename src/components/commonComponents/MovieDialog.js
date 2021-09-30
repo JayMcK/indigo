@@ -114,7 +114,7 @@ export default function MovieDialog({
 
   const apiKey = process.env.REACT_APP_API_KEY;
 
-  const URL = `http://www.omdbapi.com/?t=${singleMovieString}&type=movie&apikey=${apiKey}`;
+  const URL = `https://www.omdbapi.com/?t=${singleMovieString}&type=movie&apikey=${apiKey}`;
 
   useEffect(() => {
     setIsLoading(true);

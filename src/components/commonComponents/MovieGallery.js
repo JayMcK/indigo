@@ -36,7 +36,7 @@ export default function MovieGallery({
 
   const apiKey = process.env.REACT_APP_API_KEY;
 
-  const URL = `http://www.omdbapi.com/?s=${search}&type=movie&apikey=${apiKey}`;
+  const URL = `https://www.omdbapi.com/?s=${search}&type=movie&apikey=${apiKey}`;
 
   useEffect(() => {
     axios
