@@ -8,6 +8,8 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useMediaQuery } from "@material-ui/core";
 import DialogContent from "@material-ui/core/DialogContent";
 import Divider from "@material-ui/core/Divider";
+import Backdrop from "@material-ui/core/Backdrop";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
@@ -38,8 +40,12 @@ const useStyles = makeStyles((theme) => ({
     ...theme.typography.searchButton,
     width: "100%",
     textTransform: "uppercase",
-    backgroundColor: theme.palette.common.purple,
-    color: theme.palette.common.white,
+    backgroundColor: theme.palette.common.yellow,
+    color: "#000",
+    "&:hover": {
+      backgroundColor: theme.palette.common.purple,
+      color: theme.palette.common.white,
+    },
   },
   dialogBackground: {
     backgroundColor: "#000",
@@ -81,12 +87,16 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "1.5rem",
     },
     [theme.breakpoints.down("md")]: {
-      fontSize: "1rem",
+      fontSize: "1.25rem",
     },
   },
   divider: {
     backgroundColor: theme.palette.common.white,
-    width: "10em",
+    width: "5em",
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: "#fff",
   },
 }));
 
@@ -99,6 +109,8 @@ export default function MovieDialog({
   const classes = useStyles();
   const theme = useTheme();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
@@ -108,19 +120,26 @@ export default function MovieDialog({
   const URL = `http://www.omdbapi.com/?t=${singleMovieString}&type=movie&apikey=${apiKey}`;
 
   useEffect(() => {
-    console.log(URL);
+    setIsLoading(true);
     axios
       .get(URL)
       .then((result) => {
         setFoundMovie(result.data);
+        setIsLoading(false);
       })
-      .then((error) => console.log(error));
+      .then((error) => {
+        console.log(error);
+        setIsLoading(false);
+      });
   }, [URL, setFoundMovie]);
 
   return (
     <DialogContent className={classes.dialogBackground}>
       <Grid item align="center">
         <Grid container direction="column">
+          <Backdrop open={isLoading} className={classes.backdrop}>
+            <CircularProgress color="inherit" size={100} />
+          </Backdrop>
           <Grid item align="right">
             <IconButton onClick={() => setDialogOpen(false)}>
               <CloseIcon color="primary" fontSize="large" />
@@ -138,7 +157,11 @@ export default function MovieDialog({
             </Typography>
           </Grid>
           <Grid item style={{ marginBottom: "2em" }}>
-            <Typography variant="h3" color="primary">
+            <Typography
+              variant="h3"
+              color="primary"
+              style={{ fontSize: "1.5rem" }}
+            >
               {foundMovie && foundMovie.Year !== "N/A" ? foundMovie.Year : ""}
             </Typography>
           </Grid>
@@ -442,7 +465,7 @@ export default function MovieDialog({
                 item
                 align="center"
                 style={{
-                  marginTop: "2em",
+                  marginTop: "4em",
                   marginBottom: "2em",
                   marginLeft: "1em",
                   marginRight: "1em",

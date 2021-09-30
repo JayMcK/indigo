@@ -46,6 +46,8 @@ const useStyles = makeStyles((theme) => ({
     ...theme.typography.searchButton,
     width: "100%",
     textTransform: "uppercase",
+    marginTop: "2em",
+    marginBottom: "2em",
   },
 }));
 
@@ -282,7 +284,7 @@ export default function Home({
             </Grid>
           </Grid>
         </Grid>
-        <Grid item>
+        <Grid item className={classes.moviesContainer}>
           <Button
             onClick={() => {
               window.scrollTo(0, 0);
