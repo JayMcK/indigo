@@ -24,6 +24,7 @@ import sandClock from "../../assets/sandClock.svg";
 import star from "../../assets/star.svg";
 import translate from "../../assets/translate.svg";
 import writer from "../../assets/writer.svg";
+import dollarSymbol from "../../assets/dollarSymbol.svg";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -422,6 +423,34 @@ export default function MovieDialog({
                           className={classes.list}
                         >
                           {foundMovie.Awards}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  ) : null}
+                  {foundMovie && foundMovie.BoxOffice !== "N/A" ? (
+                    <Grid
+                      container
+                      direction="column"
+                      alignItems="center"
+                      justifyContent={matchesMD ? "center" : "flex-start"}
+                      className={classes.listMargin}
+                    >
+                      <Grid item>
+                        <img
+                          src={dollarSymbol}
+                          alt="dollar symbol"
+                          className={classes.icon}
+                        />
+                      </Grid>
+                      <Grid item>
+                        <Divider className={classes.divider} />
+                      </Grid>
+                      <Grid item>
+                        <Typography
+                          variant="subtitle2"
+                          className={classes.list}
+                        >
+                          {foundMovie.BoxOffice}
                         </Typography>
                       </Grid>
                     </Grid>
