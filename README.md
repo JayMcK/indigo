@@ -4,7 +4,7 @@ Please visit the live site here: https://indigo-kappa.vercel.app/
 
 ## Introduction
 
-Indigo is a Single Page Web Application, designed using Figma. Indigo is a movie information website, developed using OMDb's API; allowing the user to browse movie titles. Material UI was used extensively throughout this project.
+Indigo is a Single Page Web Application, designed using Figma. Indigo is a movie information website, developed using OMDb's REST API; allowing the user to browse movie titles. Material UI was used extensively throughout this project.
 
 ## Technologies
 
