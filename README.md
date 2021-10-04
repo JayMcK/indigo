@@ -1,4 +1,4 @@
-# Crib Cocktails
+# Indigo
 
 Please visit the live site here: https://indigo-kappa.vercel.app/
 
