@@ -72,6 +72,7 @@ export default function Home({
 
   useEffect(() => {
     setSearchMoviesString("");
+    // eslint-disable-next-line
   }, []);
 
   return (
