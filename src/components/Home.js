@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -69,6 +69,10 @@ export default function Home({
     setSearchMoviesString(e.target.value);
     console.log("moviesstring", searchMoviesString);
   };
+
+  useEffect(() => {
+    setSearchMoviesString("");
+  }, []);
 
   return (
     <Grid item>
